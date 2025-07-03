@@ -16,7 +16,9 @@ class PaymentPage{
     async paymentSection(){
         await this.termsAndConditions.click();
         await this.btnContinue.click();
+        await browser.saveScreenshot('./screenshots/payment.png');
         await this.btnConfirmOrder.click();
+        
     }
 }
 

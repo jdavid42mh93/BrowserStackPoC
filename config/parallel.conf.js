@@ -1,6 +1,7 @@
 export const config = {
     user: process.env.BROWSERSTACK_USERNAME,
     key: process.env.BROWSERSTACK_ACCESS_KEY,
+    hostname: 'hub.browserstack.com',
     //
     // ====================
     // Runner Configuration
@@ -51,9 +52,31 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome'
-    }],
+    capabilities: [
+        {
+        browserName: 'Chrome',
+        'bstack:options': {
+            browserVersion: 'latest',
+            os: 'Windows',
+            osVersion: '10'
+        }
+        },
+        {
+        browserName: 'Safari',
+        'bstack:options': {
+            browserVersion: '15.6',
+            os: 'OS X',
+            osVersion: 'Monterey'
+        }
+        },
+    ],
+
+    commonCapabilities: {
+        'bstack:options': {
+        networkLogs: 'true',
+        consoleLogs: 'verbose',
+        }
+    },
 
     //
     // ===================
@@ -107,8 +130,8 @@ export const config = {
             testObservability: true,
             testObservabilityOptions: {
                 'projectName': 'BrowserStack WebdriverIO',
-                'buildName': 'Specify your job name here. For e.g. `Nightly regression`. It should not be dynamic',
-                'buildTag': 'Any build tag goes here. For e.g. commit message'
+                'buildName': 'BrowserStack WebdriverIO Build',
+                'buildTag': 'BrowserStack WebdriverIO Tag',
             },
         }]
     ],

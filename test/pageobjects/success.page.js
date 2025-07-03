@@ -14,6 +14,7 @@ class SuccessPage{
             // Verificar que el mensaje de éxito esté visible
             await this.successMessage.waitForDisplayed();
             // Hacer clic en el botón continuar
+            await browser.saveScreenshot('./screenshots/success.png');
             await this.btnContinue.click();
         }else{
             throw new Error("Success message is not displayed");

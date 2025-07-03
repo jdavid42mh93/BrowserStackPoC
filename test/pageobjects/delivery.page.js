@@ -17,6 +17,7 @@ class DeliveryPage{
     async deliverySectionRegisterUser(){
         // click en el boton continuar
         await this.btnContinueDelivery.click();
+        await browser.saveScreenshot('./screenshots/delivery.png');
         await this.btnContinue.click();
     }
 }

@@ -98,6 +98,7 @@ class CheckoutPage {
         await this.address.setValue('123 Main St');
         await this.city.setValue('Kyiv');
         await this.postCode.setValue('12345');
+        await browser.saveScreenshot('./screenshots/checkout.png');
         // select country
         await this.country.selectByVisibleText('Ukraine');
         // wait for country option to be visible and select it
@@ -130,6 +131,7 @@ class CheckoutPage {
         await this.postCode.setValue('12345');
         await this.password.setValue('password123');
         await this.confirmPassword.setValue('password123');
+        await browser.saveScreenshot('./screenshots/checkout.png');
 
         // select country
         await this.country.selectByVisibleText('Ukraine');
