@@ -1,0 +1,17 @@
+export const htmlTags = {
+    a:      'a',
+    button: 'button',
+    div:    'div',
+    form:   'form',
+    h1:     'h1',
+    h2:     'h2',
+    h3:     'h3',
+    input:  'input',
+    label:  'label',
+    li:     'li',
+    p:      'p',
+    span:   'span',
+    ul:     'ul',
+    select: 'select',
+    option: 'option',
+}
