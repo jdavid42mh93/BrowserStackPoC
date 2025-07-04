@@ -1,14 +1,17 @@
 import TimelineService from 'wdio-timeline-reporter/timeline-service.js';
-const date = new Date();
-const year = date.getFullYear();
-const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so we add 1
-const day = String(date.getDate).padStart(2, '0'); // Pad single digit days with a leading zero
-const timestamp = `${year}-${month}-${day}`;
-const hours = String(date.getHours()).padStart(2, '0');
-const minutes = String(date.getMinutes()).padStart(2, '0');
-const seconds = String(date.getSeconds()).padStart(2, '0');
+const dateId = Date.now();
+const date = new Date(dateId);                              // Crear una instancia de Date con el timestamp
 
-const formattedDate = `${timestamp} ${hours}:${minutes}:${seconds}`;
+// Obtener día, mes y año
+const day = String(date.getDate()).padStart(2, '0');        // Asegura que siempre sean 2 dígitos
+const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0
+const year = date.getFullYear();
+const hours = date.getHours();
+const minutes = date.getMinutes();
+const seconds = date.getSeconds();
+
+// Formatear como dd/mm/aaaa
+const formattedDate = `${year}_${month}_${day}_${hours}_${minutes}_${seconds}`;
 export const config = {
     //
     // ====================
