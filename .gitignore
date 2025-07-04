@@ -1,8 +1,8 @@
 # Folders
 node_modules
 logs
-screenshots
 reports
 
 # Files
 .env
+*.png
