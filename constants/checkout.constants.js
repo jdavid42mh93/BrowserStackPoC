@@ -20,3 +20,9 @@ export const checkoutSelectors = {
     confirmPassword:        `//input[@id='input-payment-confirm']`,
     privacyPolicy:          `//input[@type='checkbox' and @name='agree']`,
 }
+
+export const checkoutData = {
+    firstName:              'John',
+    lastName:               'Doe',
+    telephone:              '123456789'
+}

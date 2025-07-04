@@ -1,4 +1,4 @@
-import { checkoutSelectors } from "../../constants/checkout.constants";
+import { checkoutData, checkoutSelectors } from "../../constants/checkout.constants";
 
 class CheckoutPage {
     get btnCheckout() {
@@ -121,11 +121,11 @@ class CheckoutPage {
         // continue to next step
         await this.btnContinue.click();
         // fill in the form
-        await this.firstName.setValue('John');
-        await this.lastName.setValue('Doe');
+        await this.firstName.setValue(checkoutData.firstName);
+        await this.lastName.setValue(checkoutData.lastName);
         await this.email.setValue(email);
         await browser.pause(3000); // wait for email to be set
-        await this.telephone.setValue('123456789');
+        await this.telephone.setValue(checkoutData.telephone);
         await this.address.setValue('123 Main St');
         await this.city.setValue('Kyiv');
         await this.postCode.setValue('12345');
