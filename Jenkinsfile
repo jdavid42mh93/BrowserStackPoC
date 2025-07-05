@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        BROWSERSTACK_USERNAME = credentials('browserstack-username')       // usa ID correcto
-        BROWSERSTACK_ACCESS_KEY = credentials('browserstack-accesskey')   // usa ID correcto
+        BROWSERSTACK_USERNAME = credentials('BROWSERSTACK_USERNAME')       // usa ID correcto
+        BROWSERSTACK_ACCESS_KEY = credentials('BROWSERSTACK_ACCESS_KEY')   // usa ID correcto
     }
 
     stages {
