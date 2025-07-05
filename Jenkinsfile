@@ -24,26 +24,26 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            script {
-                echo 'Publicando reportes de BrowserStack...'
-                browserStackReportPublisher 'automate'
+    // post {
+    //     always {
+    //         script {
+    //             echo 'Publicando reportes de BrowserStack...'
+    //             browserStackReportPublisher 'automate'
 
-                echo 'Archivando artefactos si existen...'
-                // El bloque archiveArtifacts debe ir dentro de node para que funcione
-                node {
-                    archiveArtifacts artifacts: '**/browserstack-artifacts/**', allowEmptyArchive: true
-                }
-            }
-        }
+    //             echo 'Archivando artefactos si existen...'
+    //             // El bloque archiveArtifacts debe ir dentro de node para que funcione
+    //             node {
+    //                 archiveArtifacts artifacts: '**/browserstack-artifacts/**', allowEmptyArchive: true
+    //             }
+    //         }
+    //     }
 
-        success {
-            echo 'Build finalizado exitosamente.'
-        }
+    //     success {
+    //         echo 'Build finalizado exitosamente.'
+    //     }
 
-        failure {
-            echo 'El build falló. Verifica los logs y artefactos.'
-        }
-    }
+    //     failure {
+    //         echo 'El build falló. Verifica los logs y artefactos.'
+    //     }
+    // }
 }
