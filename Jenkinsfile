@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        BROWSERSTACK_USERNAME = credentials('browserstack-username')       // o usa el ID directamente
-        BROWSERSTACK_ACCESS_KEY = credentials('browserstack-accesskey')
+        BROWSERSTACK_USERNAME = credentials('browserstack-username')       // usa ID correcto
+        BROWSERSTACK_ACCESS_KEY = credentials('browserstack-accesskey')   // usa ID correcto
     }
 
     stages {
@@ -26,11 +26,16 @@ pipeline {
 
     post {
         always {
-            echo 'Publicando reportes de BrowserStack...'
-            browserStackReportPublisher 'automate'
+            script {
+                echo 'Publicando reportes de BrowserStack...'
+                browserStackReportPublisher 'automate'
 
-            echo 'Archivando artefactos si existen...'
-            archiveArtifacts artifacts: '**/browserstack-artifacts/**', allowEmptyArchive: true
+                echo 'Archivando artefactos si existen...'
+                // El bloque archiveArtifacts debe ir dentro de node para que funcione
+                node {
+                    archiveArtifacts artifacts: '**/browserstack-artifacts/**', allowEmptyArchive: true
+                }
+            }
         }
 
         success {
