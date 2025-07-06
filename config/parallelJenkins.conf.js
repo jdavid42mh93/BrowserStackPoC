@@ -1,3 +1,4 @@
+console.log('BROWSERSTACK_BUILD_NAME:', process.env.BROWSERSTACK_BUILD_NAME);
 export const config = {
     user: process.env.BROWSERSTACK_USERNAME,
     key: process.env.BROWSERSTACK_ACCESS_KEY,
