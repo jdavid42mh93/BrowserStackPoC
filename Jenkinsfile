@@ -25,10 +25,7 @@ pipeline {
     post {
         always {
             echo 'Publicando reportes de BrowserStack...'
-            browserStackReportPublisher(buildType: 'automate', buildName: env.BROWSERSTACK_BUILD_NAME)
-
-            echo 'Archivando artefactos si existen...'
-            archiveArtifacts artifacts: '**/browserstack-artifacts/**', allowEmptyArchive: true
+            browserStackReportPublisher 'automate'
         }
 
         success {
