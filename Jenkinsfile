@@ -1,8 +1,6 @@
 pipeline {
     agent any
     environment {
-        BROWSERSTACK_USERNAME = credentials('BROWSERSTACK_USERNAME')
-        BROWSERSTACK_ACCESS_KEY = credentials('BROWSERSTACK_ACCESS_KEY')
         BROWSERSTACK_BUILD_NAME = "${JOB_NAME}-${BUILD_NUMBER}"
     }
 
