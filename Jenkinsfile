@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        BROWSERSTACK_USERNAME = credentials('BROWSERSTACK_USERNAME')
+        BROWSERSTACK_ACCESS_KEY = credentials('BROWSERSTACK_ACCESS_KEY')
+        BROWSERSTACK_BUILD_NAME = "${JOB_NAME}-${BUILD_NUMBER}"
+    }
 
     stages {
         stage('Setup') {
@@ -13,7 +18,7 @@ pipeline {
             steps {
                 echo 'Ejecutando pruebas en BrowserStack...'
                 browserstack(credentialsId: '3dede4c9-83bb-4d53-98f2-0cdea291fb59') {
-                    bat 'npm run testBS:guest-user'
+                    bat 'npm run testBSJenkins:guest-user'
                 }
             }
         }

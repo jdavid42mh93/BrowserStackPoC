@@ -15,6 +15,8 @@
     "testBS:register-user": "wdio run ./config/parallel.conf.js --spec ./test/specs/register-user.e2e.js",
     "testBS:guest-user": "wdio run ./config/parallel.conf.js --spec ./test/specs/guest-user.e2e.js",
     "testLocal:register-user": "wdio run ./config/wdio.conf.js --spec ./test/specs/register-user.e2e.js",
-    "testLocal:guest-user": "wdio run ./config/wdio.conf.js --spec ./test/specs/guest-user.e2e.js"
+    "testLocal:guest-user": "wdio run ./config/wdio.conf.js --spec ./test/specs/guest-user.e2e.js",
+    "testBSJenkins:guest-user": "wdio run ./config/parallelJenkins.conf.js --spec ./test/specs/guest-user.e2e.js",
+    "testBSJenkins:register-user": "wdio run ./config/parallelJenkins.conf.js --spec ./test/specs/register-user.e2e.js"
   }
 }
