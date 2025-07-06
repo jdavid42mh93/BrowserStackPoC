@@ -22,7 +22,7 @@ pipeline {
     post {
         always {
             echo 'Publicando reportes de BrowserStack...'
-            browserStackReportPublisher()
+            browserStackReportPublisher('automate')
 
             echo 'Archivando artefactos si existen...'
             archiveArtifacts artifacts: '**/browserstack-artifacts/**', allowEmptyArchive: true
