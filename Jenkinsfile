@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        BROWSERSTACK_BUILD_NAME = "${JOB_NAME}-${BUILD_NUMBER}"
+        BROWSERSTACK_BUILD_NAME = "BrowserStackPipeline-${BUILD_NUMBER}"
     }
 
     stages {
