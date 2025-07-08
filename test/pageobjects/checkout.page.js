@@ -1,4 +1,5 @@
 import { checkoutData, checkoutSelectors } from "../../constants/checkout.constants";
+import { getFirstUsuario } from "../../helper/query.helper";
 
 class CheckoutPage {
     get btnCheckout() {
@@ -84,6 +85,9 @@ class CheckoutPage {
     async checkoutFormGuestUser(){
         const randomNum = Math.floor(Math.random() * 100) + 1;
         const email = `pruebabi${randomNum}@gmail.com`;
+
+        const usuario = await getFirstUsuario();
+        
         // click on checkout button
         await this.btnCheckout.click();
         // select guest user
@@ -91,13 +95,13 @@ class CheckoutPage {
         // continue to next step
         await this.btnContinue.click();
         // fill in the form
-        await this.firstName.setValue('John');
-        await this.lastName.setValue('Doe');
+        await this.firstName.setValue(usuario.firstname);
+        await this.lastName.setValue(usuario.lastname);
         await this.email.setValue(email);
-        await this.telephone.setValue('123456789');
-        await this.address.setValue('123 Main St');
-        await this.city.setValue('Kyiv');
-        await this.postCode.setValue('12345');
+        await this.telephone.setValue(usuario.telefono);
+        await this.address.setValue(usuario.address);
+        await this.city.setValue(usuario.city);
+        await this.postCode.setValue(usuario.postcode);
         await browser.saveScreenshot('./screenshots/checkout.png');
         // select country
         await this.country.selectByVisibleText('Ukraine');
