@@ -98,7 +98,7 @@ class CheckoutPage {
         await this.firstName.setValue(usuario.firstname);
         await this.lastName.setValue(usuario.lastname);
         await this.email.setValue(email);
-        await this.telephone.setValue(usuario.telefono);
+        await this.telephone.setValue(usuario.telephone);
         await this.address.setValue(usuario.address);
         await this.city.setValue(usuario.city);
         await this.postCode.setValue(usuario.postcode);

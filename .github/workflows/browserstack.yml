@@ -12,6 +12,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jdavid42mh93
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,9 +39,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Setup PostgreSQL Database
+        run: |
+          # Esperar a que PostgreSQL esté listo
+          until pg_isready -h localhost -p 5432 -U postgres; do
+            echo "Waiting for PostgreSQL..."
+            sleep 2
+          done
+          
+          # Ejecutar script de inicialización
+          PGPASSWORD=jdavid42mh93 psql -h localhost -U postgres -d postgres -f database/init.sql
+          
+          echo "✅ Database setup completed"
+
       - name: Run WDIO tests on BrowserStack (parallel)
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASSWORD: jdavid42mh93
+          DB_NAME: postgres
         run: |
           npm run testBS:guest-user
